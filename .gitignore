@@ -30,6 +30,7 @@ admin-dev/import/
 download/
 /img/*
 upload/
+<<<<<<< HEAD
 
 # =========================
 # Operating System Files
@@ -81,3 +82,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+=======
+>>>>>>> e8c3a3cd3c09f68c8f215e18b6ad266bc110d444
