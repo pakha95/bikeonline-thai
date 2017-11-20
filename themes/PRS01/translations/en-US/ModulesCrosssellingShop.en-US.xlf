@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="/home/templay9/public_html/demo/Prestashop/PRS01/PRS17/PRS026/Myadmin" source-language="en-US" target-language="en-US" datatype="plaintext">
+    <body>
+      <trans-unit id="ef2b66b0b65479e08ff0cce29e19d006">
+        <source>Customers who bought this product also bought:</source>
+        <target>Customers who bought this product also bought:</target>
+        <note>Context:
+File: /home/templay9/public_html/demo/Prestashop/PRS01/PRS17/PRS026/Myadmin:</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="themes/PRS01/modules/ps_searchbar/ps_searchbar.tpl" source-language="th-TH" target-language="th-TH" datatype="plaintext">
+    <body>
+      <trans-unit id="06a943c59f33a34bb5924aaf72cd2995">
+        <source>search</source>
+        <target>ค้นหา</target>
+        <note>Context:
+File: themes/PRS01/modules/ps_searchbar/ps_searchbar.tpl:35</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="themes/PRS01/modules/ps_emailsubscription/views/templates/hook/ps_emailsubscription.tpl" source-language="th-TH" target-language="th-TH" datatype="plaintext">
+    <body>
+      <trans-unit id="ffb7e666a70151215b4c55c6268d7d72">
+        <source>Newsletter</source>
+        <target>จดหมายแจ้งข่าว</target>
+        <note>Context:
+File: themes/PRS01/modules/ps_emailsubscription/views/templates/hook/ps_emailsubscription.tpl:29</note>
+      </trans-unit>
+      <trans-unit id="be16322c48b062728d50b4a3b7a099c3">
+        <source>Wants to get an Updates, please Join our Subscribtion!</source>
+        <target>หากต้องการได้รับการปรับปรุงกรุณาสมัครสมาชิกของเรา!</target>
+        <note>Context:
+File: themes/PRS01/modules/ps_emailsubscription/views/templates/hook/ps_emailsubscription.tpl:39</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="themes/PRS01/modules/ps_socialfollow/ps_socialfollow.tpl" source-language="th-TH" target-language="th-TH" datatype="plaintext">
+    <body>
+      <trans-unit id="36fa3a193d737e5ad86441e422ed5a78">
+        <source>social</source>
+        <target>สังคมออนไลน์</target>
+        <note>Context:
+File: themes/PRS01/modules/ps_socialfollow/ps_socialfollow.tpl:30</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="themes/PRS01/templates/index.tpl" source-language="th-TH" target-language="th-TH" datatype="plaintext">
+    <body>
+      <trans-unit id="ab1744ecf933bab5dced87771e943a67">
+        <source>Trending Products</source>
+        <target>สินค้าที่ได้รับความนิยม</target>
+        <note>Context:
+File: themes/PRS01/templates/index.tpl:13</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="themes/PRS01/templates/catalog/_partials/customize/button-cart.tpl" source-language="th-TH" target-language="th-TH" datatype="plaintext">
+    <body>
+      <trans-unit id="2d0f6b8300be19cf35e89e66f0677f95">
+        <source>Add to cart</source>
+        <target>เพิ่มในรถเข็น</target>
+        <note>Context:
+File: themes/PRS01/templates/catalog/_partials/customize/button-cart.tpl:35</note>
+      </trans-unit>
+      <trans-unit id="b55197a49e8c4cd8c314bc2aa39d6feb">
+        <source>Out of stock</source>
+        <target>สินค้าหมด</target>
+        <note>Context:
+File: themes/PRS01/templates/catalog/_partials/customize/button-cart.tpl:39</note>
+      </trans-unit>
+      <trans-unit id="2e7b98e864e4018e01209ea80f66e712">
+        <source>out of stock</source>
+        <target>out of stock</target>
+        <note>Context:
+File: themes/PRS01/templates/catalog/_partials/customize/button-cart.tpl:40</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="themes/PRS01/templates/catalog/_partials/miniatures/product.tpl" source-language="th-TH" target-language="th-TH" datatype="plaintext">
+    <body>
+      <trans-unit id="c91e4ee170226d66e90f99ba917e4c20">
+        <source>Quick view</source>
+        <target>มุมมองด่วน</target>
+        <note>Context:
+File: themes/PRS01/templates/catalog/_partials/miniatures/product.tpl:28</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
