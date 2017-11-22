@@ -7,12 +7,10 @@ $(document).ready(function () {
     $.widget('prestashop.psBlockSearchAutocomplete', $.ui.autocomplete, {
         _renderItem: function (ul, product) {
             return $("<li>")
-				.append($("<img>").attr("src",product.cover.bySize.home_default.url).addClass("product-img"))
                 .append($("<a>")
                     .append($("<span>").html(product.category_name).addClass("category"))
                     .append($("<span>").html(' > ').addClass("separator"))
                     .append($("<span>").html(product.name).addClass("product"))
-					.append($("<span>").html(product.price).addClass("price"))
                 ).appendTo(ul)
             ;
         }
@@ -20,7 +18,7 @@ $(document).ready(function () {
 
     $searchBox.psBlockSearchAutocomplete({
         source: function (query, response) {
-            $.get(searchURL, {
+            $.post(searchURL, {
                 s: query.term,
                 resultsPerPage: 10
             }, null, 'json')
