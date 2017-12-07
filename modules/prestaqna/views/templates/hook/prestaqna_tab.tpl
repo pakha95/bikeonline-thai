@@ -23,5 +23,13 @@
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
-
-<li><a href="#qnaTab" class="idTabHrefShort qnaTabPointer">{l s='Ask a question' mod='prestaqna'}</a></li>
+<!-- <li><a href="#qnaTab" class="idTabHrefShort qnaTabPointer">{l s='Ask a question' mod='prestaqna'}</a></li> -->
+<li class="nav-item">
+   <a
+     class="nav-link active"
+     data-toggle="tab"
+     href="#qnaTab"
+     role="tab"
+     aria-controls="qnaTab"
+     aria-selected="true">{l s='Ask a question' mod='prestaqna'}</a>
+</li>

@@ -36,7 +36,7 @@ assets:
   css:
     all:
       - id: custom-lib-style
-        path: assets/css/custom1.css
+        path: assets/css/custom.css
 #    all:
 #      - id: custom-lib-style
 #        path: assets/css/custom-lib.css

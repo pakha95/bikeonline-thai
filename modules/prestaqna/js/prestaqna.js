@@ -26,7 +26,7 @@ $('#qna_ask').validate({
 
 $('#submitQNA').click(function() {
 	$('#qna_ask').submit();
-});	
+});
 
 /* Ajax add request*/
 function ajaxCall(caller,data) {
@@ -53,7 +53,7 @@ function ajaxCall(caller,data) {
 		{
 			$('<p class="qna_confirm confirmation">'+qna_confirm+'</p>').hide().appendTo(caller).fadeIn();
 		}
-			
+
 		else alert(data);
 		$('.ajaxloader').fadeOut('normal', function(){$(this).remove()}); //remove spinner
 	}

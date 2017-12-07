@@ -7,7 +7,7 @@ class PrestaQnA extends Module
 {
 	/* @var boolean error */
 	protected $_errors = false;
-	
+
 	public function __construct()
 	{
 		$this->name = 'prestaqna';
@@ -23,7 +23,7 @@ class PrestaQnA extends Module
 		$this->description = $this->l('Adds a block to display the "ask a quick question" box in product page.');
 		$this->confirmUninstall = $this->l('Are you sure you want to delete this module?');
 	}
-	
+
 	public function install()
 	{
 		if (!parent::install() OR
@@ -38,7 +38,7 @@ class PrestaQnA extends Module
 			return false;
 		return true;
 	}
-	
+
 	public function uninstall()
 	{
 		if (!parent::uninstall() OR !$this->_eraseTable())
@@ -72,7 +72,7 @@ class PrestaQnA extends Module
 			return false;
 		else return true;
 	}
-	
+
 
 	public function getContent(){
 
@@ -119,7 +119,7 @@ class PrestaQnA extends Module
 
 		return	$this->_html;
 	}
-	
+
 	private function _displayForm()
 	{
 		global $cookie, $currentIndex;
@@ -150,7 +150,7 @@ class PrestaQnA extends Module
 			<input type="image" src="https://www.paypalobjects.com/en_US/IT/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 			</form>
-			</div>';		
+			</div>';
 
 
 		$this->_html .= '<div class="clear">&nbsp;</div>';
@@ -160,7 +160,7 @@ class PrestaQnA extends Module
 
 
 
-		if(version_compare(_PS_VERSION_, '1.5', '>'))	
+		if(version_compare(_PS_VERSION_, '1.5', '>'))
 			$approved = $this->getStats($this->context->language->id);
 		else
 			$approved = $this->getStats($cookie->id_lang);
@@ -169,7 +169,7 @@ class PrestaQnA extends Module
 			$this->_html .= '
 				<form action="'.$_SERVER['REQUEST_URI'].'" method="post">
 					<fieldset><legend><img src="'.$this->_path.'logo.gif" alt="" title="" />'.$this->l('Stats').'</legend>
-			';			
+			';
 			foreach ($approved as $qna_n) {
 				$this->_html .= '<p><strong><a href="index.php?controller=AdminProducts&key_tab=ModulePrestaqna&id_product='.$qna_n['id_product'].'&updateproduct&token='.Tools::getAdminTokenLite('AdminProducts').'" >'.$qna_n['name'].'</a>: </strong>'.$qna_n['count'].' '.$this->l('Q&As').'</p>';
 			}
@@ -182,11 +182,11 @@ class PrestaQnA extends Module
 
 		/* Pending questions */
 
-		if(version_compare(_PS_VERSION_, '1.5', '>'))	
+		if(version_compare(_PS_VERSION_, '1.5', '>'))
 			$pending = $this->listPending($this->context->language->id);
 		else
 			$pending = $this->listPending($cookie->id_lang);
-		
+
 
 		$this->_html .= '
 			<form action="'.$_SERVER['REQUEST_URI'].'" method="post">
@@ -240,11 +240,11 @@ class PrestaQnA extends Module
 			SELECT q.id_product, pl.name, (SELECT COUNT(*) FROM  '._DB_PREFIX_.$this->table_name.' sq WHERE sq.id_product = q.id_product AND approved = 1)as count
 			FROM '._DB_PREFIX_.$this->table_name.' q
 			LEFT JOIN '._DB_PREFIX_.'product_lang pl ON (pl.id_product = q.id_product)
-			WHERE approved = 1 
+			WHERE approved = 1
 			AND pl.id_lang ='.$id_lang.'
 			GROUP BY q.id_product, pl.name
  			ORDER BY q.id_product');
-		    
+
 	}
 
 	public function listPending($id_lang)
@@ -254,7 +254,7 @@ class PrestaQnA extends Module
 			FROM '._DB_PREFIX_.$this->table_name.' q
 			LEFT JOIN '._DB_PREFIX_.'product_lang pl ON (pl.id_product = q.id_product)
 			WHERE approved = 0
-			AND pl.id_lang ='.$id_lang.' GROUP BY q.id_qna ORDER BY q.id_product');		
+			AND pl.id_lang ='.$id_lang.' GROUP BY q.id_qna ORDER BY q.id_product');
 	}
 
 	public function sendEmail($to, $id_product, $pname)
@@ -284,7 +284,7 @@ class PrestaQnA extends Module
 				return false;
 			else return true;
 		}
-		
+
 	}
 
 	public function getQNAS($id_product)
@@ -292,7 +292,7 @@ class PrestaQnA extends Module
 		return Db::getInstance(_PS_USE_SQL_SLAVE_)->ExecuteS('
 			SELECT *
 			FROM '._DB_PREFIX_.$this->table_name.' WHERE id_product = '.$id_product.' AND approved = 1');
-		    
+
 	}
 
 	public static function sendRequest($postdata)
@@ -309,7 +309,7 @@ class PrestaQnA extends Module
 		if (!Validate::isGenericName($name))
 			return 'name'; //invalid message
 		if (!Validate::isEmail($email))
-			return 'mail'; //invalid message	
+			return 'mail'; //invalid message
 
 		$data = array('question' => pSQL($message), 'email' => pSQL($email), 'name' => pSQL($name), 'approved' => 0, 'id_product' =>(int)$product, 'date_added' => date('Y-m-d'));
 		$name = Product::getProductName((int)$product);
@@ -326,9 +326,9 @@ class PrestaQnA extends Module
 					'{product_name}' => $name
 					),
 				strval(Configuration::get('PS_SHOP_EMAIL')), NULL, strval(Configuration::get('PS_SHOP_EMAIL')), NULL, NULL, NULL, dirname(__FILE__).'/mails/');
-			return true;	
+			return true;
 		} else {
-			
+
 			global $cookie;
 			Mail::Send($cookie->id_lang, 'qna_admin', Mail::l('New question to be moderated'),
 				array(
@@ -336,9 +336,9 @@ class PrestaQnA extends Module
 					'{product_name}' => $name
 					),
 				strval(Configuration::get('PS_SHOP_EMAIL')), NULL, strval(Configuration::get('PS_SHOP_EMAIL')), NULL, NULL, NULL, dirname(__FILE__).'/mails/');
-			return true;	
+			return true;
 		}
-		
+
 
 	}
 
@@ -357,8 +357,8 @@ class PrestaQnA extends Module
 				if(!Db::getInstance()->delete(_DB_PREFIX_.$this->table_name, 'id_qna ='.(int)$qnadel))
 					$this->controller->errors[] = mysql_error();
 			}
-			
-			
+
+
 		}
 		// now update each entry
 		foreach ($questions as $id_qna => $content) {
@@ -380,15 +380,15 @@ class PrestaQnA extends Module
 		return $this->display(__FILE__, 'prestaqna_bo.tpl');
 
 	}
-	
-	public function hookProductTab($params)
+
+	public function hookDisplayProductTab($params)
 	{
 		if(version_compare(_PS_VERSION_, '1.6', '<'))
 		return $this->display(__FILE__, 'prestaqna_tab.tpl');
 
 	}
-	
-	public function hookProductTabContent($params)
+
+	public function hookDisplayProductTabContent($params)
 	{
 
 		$qnas = $this->getQNAS(Tools::getValue('id_product'));
@@ -397,13 +397,15 @@ class PrestaQnA extends Module
 		{
 			$this->context->smarty->assign(array(
 				'qnas' => $qnas,
-				'qnas_nb' => sizeof($qnas)
+				'qnas_nb' => sizeof($qnas),
+				'baseDir' => $this->context->link->getModuleLink('prestaqna')
 				));
 		} else {
 			global $smarty;
 			$smarty->assign(array(
 				'qnas' => $qnas,
-				'qnas_nb' => sizeof($qnas)
+				'qnas_nb' => sizeof($qnas),
+				'baseDir' => $this->context->link->getModuleLink('prestaqna')
 				));
 		}
 		if(version_compare(_PS_VERSION_, '1.6', '>'))
@@ -417,17 +419,17 @@ class PrestaQnA extends Module
 		{
 			if(isset($this->context->controller->php_self)  && $this->context->controller->php_self == 'product')
 			{
-				$this->context->controller->addCSS(($this->_path).'css/prestaqna.css', 'all');		
-				$this->context->controller->addJS(($this->_path).'js/jquery.validate.min.js', 'all');	
-				$this->context->controller->addJS(($this->_path).'js/prestaqna.js', 'all');		
-			}	
+				$this->context->controller->addCSS(($this->_path).'css/prestaqna.css', 'all');
+				$this->context->controller->addJS(($this->_path).'js/jquery.validate.min.js', 'all');
+				$this->context->controller->addJS(($this->_path).'js/prestaqna.js', 'all');
+			}
 		} else {
-			Tools::addCSS(($this->_path).'css/prestaqna.css', 'all');		
-			Tools::addJS(($this->_path).'js/jquery.validate.min.js', 'all');	
-			Tools::addJS(($this->_path).'js/prestaqna.js', 'all');		
+			Tools::addCSS(($this->_path).'css/prestaqna.css', 'all');
+			Tools::addJS(($this->_path).'js/jquery.validate.min.js', 'all');
+			Tools::addJS(($this->_path).'js/prestaqna.js', 'all');
 		}
-		
-		
+
+
 	}
 
 
@@ -449,5 +451,9 @@ class PrestaQnA extends Module
 
 
 	}
-	
+	public function hookDisplayProductListReviews($params)
+	{
+		return $this->hookProductTab($params);
+	}
+
 }

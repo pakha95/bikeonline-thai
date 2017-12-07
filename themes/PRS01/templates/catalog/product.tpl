@@ -43,6 +43,9 @@
   <meta property="product:weight:value" content="{$product.weight}">
   <meta property="product:weight:units" content="{$product.weight_unit}">
   {/if}
+  <script type="text/javascript">
+      var baseDir = '/shop/';
+  </script>
 {/block}
 
 {block name='content'}
@@ -75,7 +78,7 @@
           </section>
         {/block}
         </div>
-        <div class="col-md-6 pb-right-column">    
+        <div class="col-md-6 pb-right-column">
           {block name='page_header_container'}
             {block name='page_header'}
               <h1 class="h1 tt-producttitle" itemprop="name">{block name='page_title'}{$product.name}{/block}</h1>
@@ -84,6 +87,12 @@
           {block name='product_prices'}
             {include file='catalog/_partials/product-prices.tpl'}
           {/block}
+          {if isset($product.reference_to_display)}
+            <div class="product-reference">
+              <label class="label">{l s='Reference# : ' d='Shop.Theme.Catalog'} </label>
+              <span itemprop="sku">{$product.reference_to_display}</span>
+            </div>
+          {/if}
 
           <div class="product-information">
             {block name='product_description_short'}
@@ -144,7 +153,7 @@
               {hook h='displayReassurance'}
             {/block}
 
-           
+
         </div>
       </div>
 	  <div class="ttproductpagetab">
@@ -191,6 +200,15 @@
                         aria-controls="extra-{$extraKey}">{$extra.title}</a>
                     </li>
                   {/foreach}
+                  {hook h='displayProductTab'}
+                  <li class="nav-item">
+                     <a
+                       class="nav-link"
+                       data-toggle="tab"
+                       href="#qnaTab"
+                       role="tab"
+                       aria-controls="qnaTab">{l s='Ask a question' d='Shop.Theme.Catalog'}</a>
+                  </li>
                 </ul>
 
                 <div class="tab-content" id="tab-content">
@@ -203,7 +221,11 @@
                  {block name='product_details'}
                    {include file='catalog/_partials/product-details.tpl'}
                  {/block}
-
+                {block name='qnaTab'}
+                  <div class="tab-pane fade in" id="qnaTab" role="tabpanel">
+                     {hook h='displayProductTabContent'}
+                   </div>
+                {/block}
                  {block name='product_attachments'}
                    {if $product.attachments}
                     <div class="tab-pane fade in" id="attachments" role="tabpanel">
@@ -228,12 +250,13 @@
                    {$extra.content nofilter}
                  </div>
                  {/foreach}
-              </div>  
+
+              </div>
             </div>
           {/block}
 		  </div>
     </div>
-	
+
     {block name='product_accessories'}
       {if $accessories}
         <section class="product-accessories clearfix">
